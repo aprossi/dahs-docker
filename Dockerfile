@@ -48,7 +48,9 @@ RUN /usr/bin/wget -P /var/gavo/web/nv_static/img http://dc.g-vo.org/static/img/l
 
 # start Apache and DaHS
 RUN apachectl start
-RUN /usr/bin/gavo serve start
+
+# start of gavo at run time instead that build
+# RUN /usr/bin/gavo serve start
 
 # AWStat
 RUN apt-get -y install awstats
