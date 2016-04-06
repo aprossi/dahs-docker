@@ -44,7 +44,7 @@ RUN echo 'authority: <<authority-ivo-name>>' >>/etc/gavo.rc
 RUN mkdir /var/gavo/web/nv_static/img
 RUN /usr/bin/wget -P /var/gavo/web/nv_static/img http://dc.g-vo.org/static/img/logo_medium.png
 RUN /usr/bin/wget -P /var/gavo/web/nv_static/img http://dc.g-vo.org/static/img/logo_tiny.png
-RUN /usr/bin/wget -P /var/gavo/web/nv_static/img http://dc.g-vo.org/static/img/logo_large.png
+RUN /usr/bin/wget -P /var/gavo/web/nv_static/img http://dc.g-vo.org/static/img/logo_big.png
 
 # start Apache and DaHS
 RUN apachectl start
