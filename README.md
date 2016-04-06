@@ -4,8 +4,6 @@ This is an attempt to make a working (for teaching/training purposes) installati
 
 The image is based on Debian 8.2.
 
-**not yet tested**
-
 # build
 
 with the [Dockerfile](Dockerfile) available on current working directory:
