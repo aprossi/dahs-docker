@@ -28,8 +28,8 @@ RUN cp /var/gavo/etc/trustedquery /var/gavo/etc/untrustedquery
 RUN echo '[general]' >>/etc/gavo.rc
 RUN echo 'https://github.com/aprossi/gavo-docker' >>/etc/gavo.rc
 RUN echo 'maintainerAddress: <<maintainer_email>>' >>/etc/gavo.rc
-RUN echo '[web]' >>/etc/gavo.rc'
-RUN echo 'bindAddress:' >>/etc/gavo.rc'
+RUN echo '[web]' >>/etc/gavo.rc
+RUN echo 'bindAddress:' >>/etc/gavo.rc
 RUN echo 'serverPort: 8000' >>/etc/gavo.rc
 RUN echo 'serverURL: 127.0.0.1' >>/etc/gavo.rc
 RUN echo 'preloadRDs: rr/q' >>/etc/gavo.rc
