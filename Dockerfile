@@ -1,4 +1,4 @@
-FROM debian:8
+FROM debian:8.2
 MAINTAINER apr
 EXPOSE 8080
 
