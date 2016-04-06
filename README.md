@@ -12,6 +12,12 @@ with the [Dockerfile](Dockerfile) available on current working directory:
 docker build -t gavodocker:latest .
 ```
 
+or directly from here
+
+```
+docker build -t gavodocker:latest https://raw.githubusercontent.com/aprossi/gavo-docker/master/Dockerfile
+```
+
 # Run
 
 ```
