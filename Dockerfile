@@ -72,3 +72,35 @@ RUN echo '' >> /etc/apache2/sites-enabled/000-default.conf
 RUN echo '' >> /etc/apache2/sites-enabled/000-default.conf
 RUN echo '</VirtualHost>' >> /etc/apache2/sites-enabled/000-default.conf
 
+# # EDIT /etc/awstats/awstats.conf
+
+RUN sed -i '/LogFile=/d' /etc/awstats/awstats.conf
+RUN echo 'LogFile="/usr/share/awstats/tools/logresolvemerge.pl /var/log/apache2/access.log* |"' >> /etc/awstats/awstats.conf
+
+RUN sed -i '/LogFormat=/d' /etc/awstats/awstats.conf
+RUN echo 'LogFormat=1' >> /etc/awstats/awstats.conf
+
+RUN sed -i '/SiteDomain=/d' /etc/awstats/awstats.conf
+RUN echo 'SiteDomain="<<my_servername>>.<<my_domain>>"' >> /etc/awstats/awstats.conf
+
+RUN sed -i '/HostAliases=/d' /etc/awstats/awstats.conf
+RUN echo 'DNSLookup=2' >> /etc/awstats/awstats.conf
+
+RUN sed -i '/DNSLookup=/d' /etc/awstats/awstats.conf
+RUN echo 'LogFormat=1' >> /etc/awstats/awstats.conf
+
+RUN sed -i '/AllowFullYearView=/d' /etc/awstats/awstats.conf
+RUN echo 'AllowFullYearView=3' >> /etc/awstats/awstats.conf
+
+RUN sed -i 'SkipHosts=/d' /etc/awstats/awstats.conf
+RUN echo 'SkipHosts="145.238.187.13 145.238.187.29"' >> /etc/awstats/awstats.conf
+
+
+
+
+
+
+
+
+
+
