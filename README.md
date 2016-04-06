@@ -21,29 +21,7 @@ docker build -t gavodocker:latest https://raw.githubusercontent.com/aprossi/gavo
 # Run
 
 ```
-docker run --rm -i -t \
--v ~/files-for-docker:~ \
--e DISPLAY=XXX.XXX.XXX.XXX:0 \
-gavodocker:latest /usr/bin/gavo serve start
-```
-
-where ```XXX.XXX.XXX.XXX``` is the IP of the **host**
-
-e.g. on a mac laptop en0 = ethernet en1 = wi-fi (I guess):
-
-
-e.g. in bash (in the host docker shell):
-
-```
-IPHOST="$(ifconfig en1 | grep "inet " | cut -d ' ' -f 2)"
-```
-
-
-```
-docker run --rm -i -t \
--v ~/files-for-docker:~ \
--e DISPLAY=$IPHOST:0 \
-gavodocker:latest /bin/bash
-```
+docker run --rm -i -t gavodocker:latest /usr/bin/gavo serve start
+``` 
 
 
