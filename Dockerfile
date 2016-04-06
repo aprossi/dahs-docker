@@ -52,4 +52,23 @@ RUN gavo serve start
 # AWStat
 RUN apt-get install awstats
 
+RUN rm /etc/apache2/sites-enabled/000-default.conf
+RUN echo '<VirtualHost *:8080>' > /etc/apache2/sites-enabled/000-default.conf
+RUN echo '' >> /etc/apache2/sites-enabled/000-default.conf
+RUN echo '' >> /etc/apache2/sites-enabled/000-default.conf
+RUN echo '       ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/' >> /etc/apache2/sites-enabled/000-default.conf
+RUN echo '       <Directory "/usr/lib/cgi-bin">' >> /etc/apache2/sites-enabled/000-default.conf
+RUN echo '               Options FollowSymLinks' >> /etc/apache2/sites-enabled/000-default.conf
+RUN echo '               AddHandler cgi-script  .pl' >> /etc/apache2/sites-enabled/000-default.conf
+RUN echo '               AllowOverride None' >> /etc/apache2/sites-enabled/000-default.conf
+RUN echo '              Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch' >> /etc/apache2/sites-enabled/000-default.conf
+RUN echo '               Order allow,deny' >> /etc/apache2/sites-enabled/000-default.conf
+RUN echo '               Allow from all' >> /etc/apache2/sites-enabled/000-default.conf
+RUN echo '       </Directory>' >> /etc/apache2/sites-enabled/000-default.conf
+RUN echo '' >> /etc/apache2/sites-enabled/000-default.conf
+RUN echo '       ErrorLog ${APACHE_LOG_DIR}/error.log' >> /etc/apache2/sites-enabled/000-default.conf
+RUN echo '       CustomLog ${APACHE_LOG_DIR}/access.log combined' >> /etc/apache2/sites-enabled/000-default.conf
+RUN echo '' >> /etc/apache2/sites-enabled/000-default.conf
+RUN echo '' >> /etc/apache2/sites-enabled/000-default.conf
+RUN echo '</VirtualHost>' >> /etc/apache2/sites-enabled/000-default.conf
 
