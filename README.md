@@ -24,7 +24,7 @@ docker build -t gavodocker:latest https://raw.githubusercontent.com/aprossi/gavo
 docker run --rm -i -t \
 -v ~/files-for-docker:~ \
 -e DISPLAY=XXX.XXX.XXX.XXX:0 \
-gavodocker:latest
+gavodocker:latest /usr/bin/gavo serve start
 ```
 
 where ```XXX.XXX.XXX.XXX``` is the IP of the **host**
