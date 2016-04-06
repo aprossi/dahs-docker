@@ -37,4 +37,10 @@ RUN echo 'sitename: <<server_title>>' >>/etc/gavo.rc
 RUN echo '[ivoa]' >>/etc/gavo.rc
 RUN echo 'authority: <<authority-ivo-name>>' >>/etc/gavo.rc
 
+# images
+RUN mkdir /var/gavo/web/nv_static/img
+RUN wget -P /var/gavo/web/nv_static/img http://dc.g-vo.org/static/img/logo_medium.png
+RUN wget -P /var/gavo/web/nv_static/img http://dc.g-vo.org/static/img/logo_tiny.png
+RUN wget -P /var/gavo/web/nv_static/img http://dc.g-vo.org/static/img/logo_large.png
+
 
