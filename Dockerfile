@@ -2,7 +2,7 @@ FROM debian:8.2
 MAINTAINER apr
 EXPOSE 8080
 
-RUN RUN apt-get update -y
+RUN apt-get update -y
 RUN apt-get -y install apache2
 RUN apt-get -y install sed
 RUN a2enmod cgi
