@@ -4,10 +4,12 @@ EXPOSE 8080
 
 
 RUN apt-get install apache2
+RUN apt-get install sed
 RUN a2enmod cgi
 
-# pico /etc/apache2/ports.conf
-# Listen 8080
+# EDIT /etc/apache2/ports.conf
+RUN sed -i '/Listen 80/d' /etc/apache2/ports.conf
+RUN echo 'Listen 8080' >> /etc/apache2/ports.conf
 
 RUN service apache2 restart
 
@@ -42,5 +44,12 @@ RUN mkdir /var/gavo/web/nv_static/img
 RUN wget -P /var/gavo/web/nv_static/img http://dc.g-vo.org/static/img/logo_medium.png
 RUN wget -P /var/gavo/web/nv_static/img http://dc.g-vo.org/static/img/logo_tiny.png
 RUN wget -P /var/gavo/web/nv_static/img http://dc.g-vo.org/static/img/logo_large.png
+
+# start Apache and DaHS
+RUN apachectl start
+RUN gavo serve start
+
+# AWStat
+RUN apt-get install awstats
 
 
