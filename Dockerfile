@@ -2,9 +2,9 @@ FROM debian:8.2
 MAINTAINER apr
 EXPOSE 8080
 
-RUN RUN apt-get update
-RUN apt-get install apache2
-RUN apt-get install sed
+RUN RUN apt-get update -y
+RUN apt-get -y install apache2
+RUN apt-get -y install sed
 RUN a2enmod cgi
 
 # EDIT /etc/apache2/ports.conf
@@ -18,10 +18,10 @@ RUN echo 'deb http://vo.ari.uni-heidelberg.de/debian stable main' >> /etc/apt/so
 RUN echo 'deb-src http://vo.ari.uni-heidelberg.de/debian stable main' >> /etc/apt/sources.list
 RUN wget -qO - http://docs.g-vo.org/archive-key.asc | sudo apt-key add -
 
-RUN apt-get update
-RUN apt-get upgrade
+RUN apt-get update -y
+RUN apt-get upgrade -y
 
-RUN apt-get install gavodachs-server
+RUN apt-get -y install gavodachs-server
 RUN apachectl stop
 
 RUN cp /var/gavo/etc/trustedquery /var/gavo/etc/untrustedquery
@@ -50,7 +50,7 @@ RUN apachectl start
 RUN gavo serve start
 
 # AWStat
-RUN apt-get install awstats
+RUN apt-get -y install awstats
 
 RUN rm /etc/apache2/sites-enabled/000-default.conf
 RUN echo '<VirtualHost *:8080>' > /etc/apache2/sites-enabled/000-default.conf
