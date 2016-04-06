@@ -16,7 +16,7 @@ RUN service apache2 restart
 RUN echo '# DaCHS repository' >> /etc/apt/sources.list
 RUN echo 'deb http://vo.ari.uni-heidelberg.de/debian stable main' >> /etc/apt/sources.list
 RUN echo 'deb-src http://vo.ari.uni-heidelberg.de/debian stable main' >> /etc/apt/sources.list
-RUN wget -qO - http://docs.g-vo.org/archive-key.asc | sudo apt-key add -
+RUN wget -qO - http://docs.g-vo.org/archive-key.asc | apt-key add -
 
 RUN apt-get update -y
 RUN apt-get upgrade -y
