@@ -4,6 +4,7 @@ EXPOSE 8080
 
 RUN apt-get update -y
 RUN apt-get -y install apache2
+RUN apt-get -y install wget
 RUN apt-get -y install sed
 RUN a2enmod cgi
 
@@ -41,13 +42,13 @@ RUN echo 'authority: <<authority-ivo-name>>' >>/etc/gavo.rc
 
 # images
 RUN mkdir /var/gavo/web/nv_static/img
-RUN wget -P /var/gavo/web/nv_static/img http://dc.g-vo.org/static/img/logo_medium.png
-RUN wget -P /var/gavo/web/nv_static/img http://dc.g-vo.org/static/img/logo_tiny.png
-RUN wget -P /var/gavo/web/nv_static/img http://dc.g-vo.org/static/img/logo_large.png
+RUN /usr/bin/wget -P /var/gavo/web/nv_static/img http://dc.g-vo.org/static/img/logo_medium.png
+RUN /usr/bin/wget -P /var/gavo/web/nv_static/img http://dc.g-vo.org/static/img/logo_tiny.png
+RUN /usr/bin/wget -P /var/gavo/web/nv_static/img http://dc.g-vo.org/static/img/logo_large.png
 
 # start Apache and DaHS
 RUN apachectl start
-RUN gavo serve start
+RUN /usr/bin/gavo serve start
 
 # AWStat
 RUN apt-get -y install awstats
@@ -74,34 +75,34 @@ RUN echo '</VirtualHost>' >> /etc/apache2/sites-enabled/000-default.conf
 
 # # EDIT /etc/awstats/awstats.conf
 
-RUN sed -i '/LogFile=/d' /etc/awstats/awstats.conf
+RUN /usr/bin/sed -i '/LogFile=/d' /etc/awstats/awstats.conf
 RUN echo 'LogFile="/usr/share/awstats/tools/logresolvemerge.pl /var/log/apache2/access.log* |"' >> /etc/awstats/awstats.conf
 
-RUN sed -i '/LogFormat=/d' /etc/awstats/awstats.conf
+RUN /usr/bin/sed -i '/LogFormat=/d' /etc/awstats/awstats.conf
 RUN echo 'LogFormat=1' >> /etc/awstats/awstats.conf
 
-RUN sed -i '/SiteDomain=/d' /etc/awstats/awstats.conf
+RUN /usr/bin/sed -i '/SiteDomain=/d' /etc/awstats/awstats.conf
 RUN echo 'SiteDomain="<<my_servername>>.<<my_domain>>"' >> /etc/awstats/awstats.conf
 
-RUN sed -i '/HostAliases=/d' /etc/awstats/awstats.conf
+RUN /usr/bin/sed -i '/HostAliases=/d' /etc/awstats/awstats.conf
 RUN echo 'DNSLookup=2' >> /etc/awstats/awstats.conf
 
-RUN sed -i '/DNSLookup=/d' /etc/awstats/awstats.conf
+RUN /usr/bin/sed -i '/DNSLookup=/d' /etc/awstats/awstats.conf
 RUN echo 'LogFormat=1' >> /etc/awstats/awstats.conf
 
-RUN sed -i '/AllowFullYearView=/d' /etc/awstats/awstats.conf
+RUN /usr/bin/sed -i '/AllowFullYearView=/d' /etc/awstats/awstats.conf
 RUN echo 'AllowFullYearView=3' >> /etc/awstats/awstats.conf
 
-RUN sed -i 'SkipHosts=/d' /etc/awstats/awstats.conf
+RUN /usr/bin/sed -i 'SkipHosts=/d' /etc/awstats/awstats.conf
 RUN echo 'SkipHosts="145.238.187.13 145.238.187.29"' >> /etc/awstats/awstats.conf
 
 # EDIT awstats.dachs.conf
 RUN cp /etc/awstats/awstats.conf /etc/awstats/awstats.dachs.conf
-RUN sed -i 'LogFile=/d' /etc/awstats/awstats.dachs.conf
+RUN /usr/bin/sed -i 'LogFile=/d' /etc/awstats/awstats.dachs.conf
 RUN echo 'LogFile="/usr/share/awstats/tools/logresolvemerge.pl /var/gavo/logs/web.log* |"' >> /etc/awstats/awstats.conf
-RUN sed -i 'LogFormat=/d' /etc/awstats/awstats.dachs.conf
+RUN /usr/bin/sed -i 'LogFormat=/d' /etc/awstats/awstats.dachs.conf
 RUN echo 'LogFormat="%other %other %other %host %other %other %time1 %methodurl %code %bytesd %refererquot %uaquot"' >> /etc/awstats/awstats.conf
-RUN sed -i 'URLWithQuery=/d' /etc/awstats/awstats.dachs.conf
+RUN /usr/bin/sed -i 'URLWithQuery=/d' /etc/awstats/awstats.dachs.conf
 RUN echo 'URLWithQuery=1' >> /etc/awstats/awstats.conf
 
 # EDIT /usr/local/bin/run_awstats
