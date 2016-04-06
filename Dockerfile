@@ -95,7 +95,7 @@ RUN echo 'LogFormat=1' >> /etc/awstats/awstats.conf
 RUN sed -i '/AllowFullYearView=/d' /etc/awstats/awstats.conf
 RUN echo 'AllowFullYearView=3' >> /etc/awstats/awstats.conf
 
-RUN sed -i 'SkipHosts=/d' /etc/awstats/awstats.conf
+RUN sed -i '/SkipHosts=/d' /etc/awstats/awstats.conf
 RUN echo 'SkipHosts="145.238.187.13 145.238.187.29"' >> /etc/awstats/awstats.conf
 
 # EDIT awstats.dachs.conf
