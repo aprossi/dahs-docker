@@ -100,11 +100,11 @@ RUN echo 'SkipHosts="145.238.187.13 145.238.187.29"' >> /etc/awstats/awstats.con
 
 # EDIT awstats.dachs.conf
 RUN cp /etc/awstats/awstats.conf /etc/awstats/awstats.dachs.conf
-RUN sed -i 'LogFile=/d' /etc/awstats/awstats.dachs.conf
+RUN sed -i '/LogFile=/d' /etc/awstats/awstats.dachs.conf
 RUN echo 'LogFile="/usr/share/awstats/tools/logresolvemerge.pl /var/gavo/logs/web.log* |"' >> /etc/awstats/awstats.conf
-RUN sed -i 'LogFormat=/d' /etc/awstats/awstats.dachs.conf
+RUN sed -i '/LogFormat=/d' /etc/awstats/awstats.dachs.conf
 RUN echo 'LogFormat="%other %other %other %host %other %other %time1 %methodurl %code %bytesd %refererquot %uaquot"' >> /etc/awstats/awstats.conf
-RUN sed -i 'URLWithQuery=/d' /etc/awstats/awstats.dachs.conf
+RUN sed -i '/URLWithQuery=/d' /etc/awstats/awstats.dachs.conf
 RUN echo 'URLWithQuery=1' >> /etc/awstats/awstats.conf
 
 # EDIT /usr/local/bin/run_awstats
