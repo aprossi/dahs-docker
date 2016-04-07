@@ -21,7 +21,7 @@ docker build -t gavodocker:latest https://raw.githubusercontent.com/aprossi/gavo
 # Run
 
 ```
-docker run --rm -i -t gavodocker:latest /usr/bin/gavo serve start
+docker run --rm -i -t -p 8000:8000 gavodocker:latest /usr/bin/gavo serve start
 ``` 
 
 
