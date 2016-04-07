@@ -29,7 +29,7 @@ RUN cp /var/gavo/etc/trustedquery /var/gavo/etc/untrustedquery
 
 # FOR TESTING
 RUN echo '[general]' >>/etc/gavo.rc
-RUN echo 'https://github.com/aprossi/gavo-docker' >>/etc/gavo.rc
+RUN echo 'rootDir: /var/gavo ' >>/etc/gavo.rc
 RUN echo 'maintainerAddress: email-test' >>/etc/gavo.rc
 RUN echo '[web]' >>/etc/gavo.rc
 RUN echo 'bindAddress:' >>/etc/gavo.rc
