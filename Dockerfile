@@ -28,17 +28,17 @@ RUN apachectl stop
 RUN cp /var/gavo/etc/trustedquery /var/gavo/etc/untrustedquery
 
 # FOR TESTING
-RUN echo '[general]' >>/etc/gavo.rc
-RUN echo 'https://github.com/aprossi/gavo-docker' >>/etc/gavo.rc
-RUN echo 'maintainerAddress: email-test' >>/etc/gavo.rc
-RUN echo '[web]' >>/etc/gavo.rc
-RUN echo 'bindAddress:' >>/etc/gavo.rc
-RUN echo 'serverPort: 8000' >>/etc/gavo.rc
-RUN echo 'serverURL: 127.0.0.1' >>/etc/gavo.rc
-RUN echo 'preloadRDs: rr/q' >>/etc/gavo.rc
-RUN echo 'sitename: Server title' >>/etc/gavo.rc
-RUN echo '[ivoa]' >>/etc/gavo.rc
-RUN echo 'authority: vopdc.obspm' >>/etc/gavo.rc
+RUN echo -e '[general]\n' >>/etc/gavo.rc
+RUN echo -e 'https://github.com/aprossi/gavo-docker\n' >>/etc/gavo.rc
+RUN echo -e 'maintainerAddress: email-test\n' >>/etc/gavo.rc
+RUN echo -e '[web]\n' >>/etc/gavo.rc
+RUN echo -e 'bindAddress:\n' >>/etc/gavo.rc
+RUN echo -e 'serverPort: 8000\n' >>/etc/gavo.rc
+RUN echo -e 'serverURL: 127.0.0.1\n' >>/etc/gavo.rc
+RUN echo -e 'preloadRDs: rr/q\n' >>/etc/gavo.rc
+RUN echo -e 'sitename: Server title\n' >>/etc/gavo.rc
+RUN echo -e '[ivoa]\n' >>/etc/gavo.rc
+RUN echo -e 'authority: vopdc.obspm\n' >>/etc/gavo.rc
 
 # images
 RUN mkdir /var/gavo/web/nv_static/img
